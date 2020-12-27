@@ -1,4 +1,4 @@
-# tdd-app
+# learn-vue-js-unit-test
 
 ## Project setup
 ```
