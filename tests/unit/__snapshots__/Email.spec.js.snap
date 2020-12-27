@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserView renders the component 1`] = `
+<div><input type="text" name="email">
+  <!---->
+</div>
+`;
+
+exports[`UserView should validate not valid email and render span with error message 1`] = `<div><input type="text" name="email"> <span class="error">Informe um e-mail válido</span></div>`;
+
+exports[`UserView should validate valid email and not render span with error message 1`] = `
+<div><input type="text" name="email">
+  <!---->
+</div>
+`;
