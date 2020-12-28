@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import Email from '@/components/Email'
 
-describe('UserView', () => {
+describe('Email', () => {
 
     const build = () => {
         const wrapper = shallowMount(Email)
@@ -23,20 +23,6 @@ describe('UserView', () => {
         expect(spanError.exists()).toBe(false)
     })
 
-    it('should validate not valid email and render span with error message', () => {
-        // arrange
-        const { wrapper } = build()
-        const inputEmail = wrapper.find('input[name="email"]') 
-        inputEmail.setValue('invalid.email')
-
-        const spanError = wrapper.find('span.error')
-        
-        // assert
-        expect(wrapper.html()).toMatchSnapshot()
-        expect(inputEmail.exists()).toBe(true)
-        expect(spanError.exists()).toBe(true)
-    })
-
     it('should validate valid email and not render span with error message', () => {
         // arrange
         const { wrapper } = build()
@@ -49,6 +35,23 @@ describe('UserView', () => {
         expect(wrapper.html()).toMatchSnapshot()
         expect(inputEmail.exists()).toBe(true)
         expect(spanError.exists()).toBe(false)
+    })
+
+    it('should validate not valid email and render span with error message', async () => {
+        // arrange
+        const { wrapper } = build()
+        const inputEmail = wrapper.find('input[name="email"]') 
+        await inputEmail.setValue('invalid.email')
+        
+        const spanError = wrapper.find('span.error')
+        
+        console.log(inputEmail)
+        console.log(spanError)
+
+        // assert
+        expect(wrapper.html()).toMatchSnapshot()
+        expect(inputEmail.exists()).toBe(true)
+        expect(spanError.exists()).toBe(true)
     })
 
 })
